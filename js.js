@@ -8,8 +8,8 @@ function showList() {
                 noidung+= `<tr>
              <td>${data[i].id}</td>
              <td>${data[i].name}</td>
-             <td><p onclick = showFormEdit(${data[i].id}) >update</p></td>
-             <td>delete</td>
+             <td><p onclick = showFormEdit(${data[i].id})>update</p></td>
+             <td><p onclick = deleteType(${data[i].id})>delete</p></td>
              </tr>`
             }
             document.getElementById("content").innerHTML =noidung;
@@ -45,9 +45,42 @@ function showFormEdit(id) {
     $.ajax({
         type : "GET",
         url : "http://localhost:8080/api/type/" + id,
-        success : function(data){
+        success : function (data) {
             console.log(data, "data");
             document.getElementById("nameedit").value = data.name;
+            document.getElementById("idedit").value = data.id;
+        }, 
+        error: function(){
+            console.log();
         }
+    })
+}
+
+function saveEdit(){
+    // b1 lay du lieu
+    let newname = document.getElementById("nameedit").value;
+    let newid = document.getElementById("idedit").value;
+    let editType = {
+        "name": newname
+    }
+    // B2: goi AJAX
+    $.ajax({
+        headers:{
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        type: "PUT",
+        data: JSON.stringify(editType),
+        url: "http://localhost:8080/api/type/" + newid,
+        success: showList
+    })
+}
+
+function deleteType(id){
+    event.preventDefault;
+    $.ajax({
+        type : "DELETE",
+        url : "http://localhost:8080/api/type/" + id,
+        success: showList
     })
 }

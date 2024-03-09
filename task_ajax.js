@@ -6,11 +6,17 @@ function showListTask() {
             // console.log(data);
             let content = "";
             for (let i = 0; i < data.length; i++){
-                content += `<tr>
+                let contenti = `<tr>
                 <td>${data[i].id}</td>
-                <td>${data[i].name}</td>
-                <td>${data[i].type.name}</td>
+                <td>${data[i].name}</td>`;
+                if (data[i].type != null){
+                    contenti += `<td>${data[i].type.name}</td>
                 </tr>`
+                }else{
+                    contenti += `<td>None</td>
+                    </tr>`
+                }
+                content += contenti;
             }
             document.getElementById("content").innerHTML = content;
         }
