@@ -13,11 +13,20 @@
 </select>
 <br>
 <button onclick="createNewTask()">create</button>
+<div style="display: none;" id = "edit">
+    <input type="hidden" name="idedit" id="idedit">
+    <input type="text" name="nameedit" id="nameedit" placeholder="name"/>
+    <select name="typeedit" id="typeedit">
+    </select>
+    <button onclick="saveEdit()">Edit</button>
+</div>
 <table border="1px">
     <tr>
         <th>id</th>
         <th>name</th>
         <th>type</th>
+        <th>Update</th>
+        <th>Delete</th>
     </tr>
     <tbody id="content">
 

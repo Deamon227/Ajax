@@ -16,8 +16,20 @@
     <input type="text" name="nameedit" id="nameedit" placeholder="name"/>
     <button onclick="saveEdit()">Edit</button>
 </div>
-<table border="1px">
+<table border="1px" onload="showTaskNo()">
 
+    <tr>
+        <th>name</th>
+        <th>taskNo</th>
+    </tr>
+    <tbody id="content1">
+
+    </tbody>
+</table>
+<span>
+    -------------
+</span>
+<table border="1px">
     <tr>
         <th>id</th>
         <th>name</th>
@@ -28,6 +40,8 @@
 
     </tbody>
 </table>
+<button onclick="logout()">Logout</button>
 <script src="js.js"></script>
+<script src="onload.js"></script>
 </body>
 </html>
