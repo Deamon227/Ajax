@@ -209,13 +209,13 @@ function countUser(){
                     <button class="accordion-button" type="button" data-bs-toggle="collapse"
                         data-bs-target="#collapseOne" aria-expanded="true"
                         aria-controls="collapseOne">
-                        ${data[i].name} has ${data[i].userNo} user(s)
+                        ${data[i].name} has ${data[i].ud.length} user(s)
                     </button>
                 </h2>
                 <div id="collapseOne" class="accordion-collapse collapse show"
                     aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                     <div class="accordion-body" id="content3">
-                    ${getUserByRole(data[i].id)}
+                    ${getUser(data[i].ud)}
                     </div>
                 </div>
             </div>`
@@ -223,6 +223,14 @@ function countUser(){
             document.getElementById("content2").innerHTML =noidung;
         }
     });
+}
+
+function getUser(data){
+    let content = "";
+    for(let j = 0; j < data.length; j++){
+       content+= '<p>' + data[j].name + '</p>'
+    }
+    return content;
 }
 
 function getUserByRole(id){
